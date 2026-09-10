@@ -1,10 +1,28 @@
 /* =========================================================
    ABIKEMI — MISSION 2026
-   CINEMATIC BIRTHDAY EXPERIENCE
+   A CINEMATIC BIRTHDAY EXPERIENCE
+   BY OLAJIDEH
 ========================================================= */
-
+/* =========================================================
+   SCREEN SYSTEM
+========================================================= */
 const screens = document.querySelectorAll(".screen");
-
+function showScreen(id) {
+    screens.forEach(screen => {
+        screen.classList.remove("active");
+    });
+    const target = document.getElementById(id);
+    if (target) {
+        target.classList.add("active");
+    }
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+/* =========================================================
+   SCREEN REFERENCES
+========================================================= */
 const intro = document.getElementById("intro");
 const identity = document.getElementById("identity");
 const mission = document.getElementById("mission");
@@ -13,577 +31,390 @@ const universe = document.getElementById("universe");
 const archive = document.getElementById("archive");
 const birthday = document.getElementById("birthday");
 const finalScreen = document.getElementById("final");
-
+/* =========================================================
+   BUTTONS
+========================================================= */
 const enterButton = document.getElementById("enterButton");
 const launchButton = document.getElementById("launchButton");
 const arrivalButton = document.getElementById("arrivalButton");
-const universeButton = document.getElementById("universeButton");
+const memoryButton = document.getElementById("memoryButton");
 const archiveButton = document.getElementById("archiveButton");
 const finalButton = document.getElementById("finalButton");
-
-const archiveImage = document.getElementById("archiveImage");
-const memoryNumber = document.getElementById("memoryNumber");
-const memoryCaption = document.getElementById("memoryCaption");
-
-
 /* =========================================================
-   SCREEN TRANSITION
+   BIRTHDAY ELEMENTS
 ========================================================= */
-
-function showScreen(target) {
-    screens.forEach((screen) => {
-        screen.classList.remove("active");
-    });
-
-    setTimeout(() => {
-        target.classList.add("active");
-    }, 80);
-}
-
-
+const birthdayTitle = document.getElementById("birthdayTitle");
+const birthdayName = document.getElementById("birthdayName");
+const birthdayMessage = document.getElementById("birthdayMessage");
+const birthdayStatus = document.getElementById("birthdayStatus");
 /* =========================================================
-   BOOT
+   BOOT SEQUENCE
 ========================================================= */
-
+showScreen("intro");
 setTimeout(() => {
-    showScreen(identity);
+    showScreen("identity");
 }, 3500);
-
-
 /* =========================================================
    IDENTITY → MISSION
 ========================================================= */
-
-enterButton.addEventListener("click", () => {
-    showScreen(mission);
-});
-
-
+if (enterButton) {
+    enterButton.addEventListener("click", () => {
+        showScreen("mission");
+    });
+}
 /* =========================================================
    MISSION → SPACE
 ========================================================= */
-
-launchButton.addEventListener("click", () => {
-
-    launchButton.textContent = "LAUNCHING...";
-
-    document.body.classList.add("launching");
-
-    createLaunchParticles();
-
-    setTimeout(() => {
-
-        document.body.classList.remove("launching");
-
-        launchButton.textContent = "🚀 LAUNCH";
-
-        showScreen(space);
-
-    }, 1600);
-});
-
-
+if (launchButton) {
+    launchButton.addEventListener("click", () => {
+        launchButton.innerHTML = "LAUNCHING...";
+        document.body.classList.add("launching");
+        createLaunchParticles();
+        setTimeout(() => {
+            document.body.classList.remove("launching");
+            launchButton.innerHTML = `
+                BEGIN MISSION
+                <span>→</span>
+            `;
+            showScreen("space");
+        }, 1600);
+    });
+}
 /* =========================================================
    SPACE → UNIVERSE
 ========================================================= */
-
-arrivalButton.addEventListener("click", () => {
-    showScreen(universe);
-});
-
-
+if (arrivalButton) {
+    arrivalButton.addEventListener("click", () => {
+        showScreen("universe");
+    });
+}
 /* =========================================================
-   UNIVERSE → ARCHIVE
+   UNIVERSE → FIRST MEMORY
 ========================================================= */
-
-universeButton.addEventListener("click", () => {
-    showScreen(archive);
-});
-
-
+if (memoryButton) {
+    memoryButton.addEventListener("click", () => {
+        currentMemory = 0;
+        updateMemory();
+        showScreen("archive");
+    });
+}
 /* =========================================================
-   MEMORIES
+   MEMORY DATA
 ========================================================= */
-
 const memories = [
     {
         image: "asset/11eef4c8-186e-41da-a821-30d66d267143.jpeg",
-        caption:
-            "Some people simply exist.<br>Some people make ordinary moments memorable."
+        caption: "SOME MOMENTS DON'T NEED AN EXPLANATION."
     },
-
     {
         image: "asset/44a227b1-d148-4a83-9625-a42e6ddb5b80.jpeg",
-        caption:
-            "A little reminder that being yourself<br>will always be your best look."
+        caption: "SOME PEOPLE JUST MAKE LIFE A LITTLE BRIGHTER."
     },
-
     {
         image: "asset/81a1f21b-6837-4656-a48b-8bafca2e8704.jpeg",
-        caption:
-            "Different picture.<br>Same Abikemi energy."
+        caption: "AND THEN THERE ARE MEMORIES YOU NEVER WANT TO LOSE."
     },
-
     {
         image: "asset/c5e86a78-4ea6-46e2-80d2-ac6ba310e573.jpeg",
-        caption:
-            "Some moments don't need a reason.<br>They just deserve to be remembered."
+        caption: "ANOTHER CHAPTER. ANOTHER COLLECTION OF MOMENTS."
     },
-
     {
         image: "asset/f3b45a18-d715-4666-931a-62cde3463b9e.jpeg",
-        caption:
-            "And yes...<br>this one absolutely had to be here. ❤️"
+        caption: "AND SOMEHOW, THIS BEAUTIFUL STORY KEEPS GOING."
     }
 ];
-
+/* =========================================================
+   MEMORY STATE
+========================================================= */
 let currentMemory = 0;
-
-
+/* =========================================================
+   MEMORY ELEMENTS
+========================================================= */
+const archiveImage = document.getElementById("archiveImage");
+const archiveCaption = document.getElementById("archiveCaption");
+const archiveNumber = document.querySelector(".archive-number");
 /* =========================================================
    UPDATE MEMORY
 ========================================================= */
-
 function updateMemory() {
-
-    archiveImage.style.opacity = "0";
-    archiveImage.style.transform = "scale(1.04)";
-
-    setTimeout(() => {
-
-        archiveImage.src = memories[currentMemory].image;
-
-        memoryNumber.textContent =
-            `${String(currentMemory + 1).padStart(2, "0")} / 05`;
-
-        memoryCaption.innerHTML =
-            memories[currentMemory].caption;
-
-        archiveImage.style.opacity = "1";
-        archiveImage.style.transform = "scale(1)";
-
-    }, 450);
+    if (!memories[currentMemory]) {
+        return;
+    }
+    const memory = memories[currentMemory];
+    /*
+       Update image
+    */
+    if (archiveImage) {
+        archiveImage.style.opacity = "0";
+        setTimeout(() => {
+            archiveImage.src = memory.image;
+            archiveImage.onload = () => {
+                archiveImage.style.opacity = "1";
+            };
+        }, 250);
+    }
+    /*
+       Update caption
+    */
+    if (archiveCaption) {
+        archiveCaption.style.opacity = "0";
+        setTimeout(() => {
+            archiveCaption.textContent = memory.caption;
+            archiveCaption.style.opacity = "1";
+        }, 250);
+    }
+    /*
+       IMPORTANT:
+       Update 01 / 05 → 02 / 05 → etc.
+    */
+    if (archiveNumber) {
+        archiveNumber.textContent =
+            `${String(currentMemory + 1).padStart(2, "0")} / ${String(memories.length).padStart(2, "0")}`;
+    }
+    /*
+       Update button
+    */
+    if (archiveButton) {
+        if (currentMemory === memories.length - 1) {
+            archiveButton.innerHTML = `
+                RECEIVE TRANSMISSION
+                <span>→</span>
+            `;
+        } else {
+            archiveButton.innerHTML = `
+                NEXT MEMORY
+                <span>→</span>
+            `;
+        }
+    }
 }
-
-
 /* =========================================================
    NEXT MEMORY
 ========================================================= */
-
-archiveButton.addEventListener("click", () => {
-
-    currentMemory++;
-
-    if (currentMemory >= memories.length) {
-
-        currentMemory = memories.length - 1;
-
-        showScreen(birthday);
-
-        setTimeout(() => {
-            startBirthdaySequence();
-        }, 900);
-
-        return;
-    }
-
-    updateMemory();
-});
-
-
+if (archiveButton) {
+    archiveButton.addEventListener("click", () => {
+        /*
+           If this is not the final memory,
+           move to the next picture.
+        */
+        if (currentMemory < memories.length - 1) {
+            currentMemory++;
+            updateMemory();
+            createMemoryParticles();
+            return;
+        }
+        /*
+           After the fifth picture,
+           start birthday sequence.
+        */
+        showScreen("birthday");
+        startBirthdaySequence();
+    });
+}
 /* =========================================================
    BIRTHDAY SEQUENCE
 ========================================================= */
-
 function startBirthdaySequence() {
-
-    const title = birthday.querySelector("h1");
-    const name = birthday.querySelector(".birthday-name");
-    const message = birthday.querySelector(".birthday-message");
-    const finalBtn = birthday.querySelector("#finalButton");
-
-    if (!title) return;
-
-    title.style.opacity = "0";
-
-    if (name) {
-        name.style.opacity = "0";
-    }
-
-    if (message) {
-        message.style.opacity = "0";
-    }
-
-    if (finalBtn) {
-        finalBtn.style.opacity = "0";
-    }
-
-
-    /* -----------------------------------------
-       CREATE SYSTEM TRANSMISSION
-    ----------------------------------------- */
-
-    let terminal = birthday.querySelector(".birthday-status");
-
-    if (!terminal) {
-
-        terminal = document.createElement("div");
-
-        terminal.className = "birthday-status";
-
-        terminal.innerHTML = `
-            <span>> TRANSMISSION RECEIVED</span>
-            <span>> DECRYPTING MESSAGE...</span>
-            <span>> CONNECTION: SECURE</span>
-        `;
-
-        birthday.insertBefore(terminal, title);
-    }
-
-    setTimeout(() => {
-        terminal.classList.add("active");
-    }, 100);
-
-
-    /* -----------------------------------------
-       TYPE HAPPY BIRTHDAY
-    ----------------------------------------- */
-
-    const birthdayText = "HAPPY BIRTHDAY";
-
-    title.textContent = "";
-
-    setTimeout(() => {
-
-        title.style.opacity = "1";
-
-        typeText(
-            title,
-            birthdayText,
-            115,
-            () => {
-
-                setTimeout(() => {
-
-                    if (name) {
-                        typeName(name);
-                    }
-
-                }, 500);
-
+    if (birthdayStatus) {
+        birthdayStatus.innerHTML = "";
+        const statusLines = [
+            "> TRANSMISSION RECEIVED",
+            "> DECRYPTING MESSAGE...",
+            "> CONNECTION: SECURE"
+        ];
+        let lineIndex = 0;
+        function showNextLine() {
+            if (lineIndex >= statusLines.length) {
+                return;
             }
-        );
-
-    }, 700);
-}
-
-
-/* =========================================================
-   TYPE TEXT
-========================================================= */
-
-function typeText(element, text, speed, callback) {
-
-    let index = 0;
-
-    const timer = setInterval(() => {
-
-        element.textContent =
-            text.slice(0, index + 1);
-
-        index++;
-
-        if (index >= text.length) {
-
-            clearInterval(timer);
-
-            if (callback) {
-                callback();
-            }
+            const line = document.createElement("div");
+            line.textContent = statusLines[lineIndex];
+            birthdayStatus.appendChild(line);
+            lineIndex++;
+            setTimeout(showNextLine, 650);
         }
-
+        showNextLine();
+    }
+    /*
+       Hide birthday content first
+    */
+    if (birthdayTitle) {
+        birthdayTitle.style.opacity = "0";
+    }
+    if (birthdayName) {
+        birthdayName.style.opacity = "0";
+    }
+    if (birthdayMessage) {
+        birthdayMessage.style.opacity = "0";
+    }
+    if (finalButton) {
+        finalButton.classList.add("hidden");
+    }
+    /*
+       Reveal HAPPY BIRTHDAY
+    */
+    setTimeout(() => {
+        if (birthdayTitle) {
+            birthdayTitle.style.opacity = "1";
+            typeText(
+                birthdayTitle,
+                "HAPPY BIRTHDAY",
+                90
+            );
+        }
+    }, 2300);
+    /*
+       Reveal ABIKEMI
+    */
+    setTimeout(() => {
+        if (birthdayName) {
+            birthdayName.style.opacity = "1";
+            typeText(
+                birthdayName,
+                "ABIKEMI ✨❤️",
+                100
+            );
+        }
+    }, 3800);
+    /*
+       Reveal message
+    */
+    setTimeout(() => {
+        if (birthdayMessage) {
+            birthdayMessage.style.opacity = "1";
+            birthdayMessage.classList.add("message-reveal");
+        }
+    }, 5000);
+    /*
+       Reveal final button
+    */
+    setTimeout(() => {
+        if (finalButton) {
+            finalButton.classList.remove("hidden");
+            createBirthdayParticles();
+        }
+    }, 6200);
+}
+/* =========================================================
+   TYPEWRITER EFFECT
+========================================================= */
+function typeText(element, text, speed = 80) {
+    element.textContent = "";
+    let index = 0;
+    const cursor = document.createElement("span");
+    cursor.className = "typing-cursor";
+    cursor.textContent = "▋";
+    element.appendChild(cursor);
+    const interval = setInterval(() => {
+        if (index < text.length) {
+            cursor.before(text[index]);
+            index++;
+        } else {
+            clearInterval(interval);
+            setTimeout(() => {
+                cursor.remove();
+            }, 700);
+        }
     }, speed);
 }
-
-
 /* =========================================================
-   TYPE ABIKEMI
+   BIRTHDAY → FINAL
 ========================================================= */
-
-function typeName(element) {
-
-    const text = "ABIKEMI ❤️";
-
-    element.textContent = "";
-    element.style.opacity = "1";
-
-    typeText(
-        element,
-        text,
-        130,
-        () => {
-
-            setTimeout(() => {
-
-                revealMessage();
-
-            }, 600);
-
-        }
-    );
+if (finalButton) {
+    finalButton.addEventListener("click", () => {
+        createFinalParticles();
+        showScreen("final");
+    });
 }
-
-
 /* =========================================================
-   REVEAL MESSAGE
+   PARTICLE ENGINE
 ========================================================= */
-
-function revealMessage() {
-
-    const message =
-        birthday.querySelector(".birthday-message");
-
-    const button =
-        birthday.querySelector("#finalButton");
-
-    if (message) {
-
-        message.style.opacity = "1";
-
-        message.classList.remove("message-reveal");
-
-        void message.offsetWidth;
-
-        message.classList.add("message-reveal");
-    }
-
+function createParticle(className = "particle") {
+    const particle = document.createElement("div");
+    particle.className = className;
+    particle.style.left =
+        `${Math.random() * 100}%`;
+    particle.style.top =
+        `${Math.random() * 100}%`;
+    particle.style.animationDelay =
+        `${Math.random() * 0.5}s`;
+    document.body.appendChild(particle);
     setTimeout(() => {
-
-        if (button) {
-            button.style.opacity = "1";
-        }
-
-    }, 1200);
+        particle.remove();
+    }, 1800);
 }
-
-
 /* =========================================================
    LAUNCH PARTICLES
 ========================================================= */
-
 function createLaunchParticles() {
-
-    const container =
-        document.createElement("div");
-
-    container.className = "celebration";
-
-    document.body.appendChild(container);
-
-    for (let i = 0; i < 28; i++) {
-
-        const particle =
-            document.createElement("span");
-
-        particle.className =
-            "celebration-particle";
-
-        particle.style.left = "50%";
-        particle.style.top = "50%";
-
-        const size =
-            Math.random() * 3 + 1;
-
-        particle.style.width =
-            `${size}px`;
-
-        particle.style.height =
-            `${size}px`;
-
-        container.appendChild(particle);
-
-        const x =
-            (Math.random() - 0.5) * 700;
-
-        const y =
-            (Math.random() - 0.5) * 700;
-
-        particle.animate(
-            [
-                {
-                    transform: "translate(-50%, -50%) scale(.2)",
-                    opacity: 0
-                },
-
-                {
-                    transform:
-                        "translate(-50%, -50%) scale(1)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(.1)`,
-                    opacity: 0
-                }
-            ],
-            {
-                duration:
-                    Math.random() * 900 + 800,
-
-                easing:
-                    "cubic-bezier(.2,.8,.2,1)"
-            }
-        );
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            createParticle("launch-particle");
+        }, i * 25);
     }
-
-    setTimeout(() => {
-        container.remove();
-    }, 2200);
 }
-
-
 /* =========================================================
-   FINAL REVEAL
+   MEMORY PARTICLES
 ========================================================= */
-
-finalButton.addEventListener("click", () => {
-
-    showScreen(finalScreen);
-
-    setTimeout(() => {
-
-        createFinalCelebration();
-
-    }, 900);
-});
-
-
+function createMemoryParticles() {
+    for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+            createParticle("memory-particle");
+        }, i * 50);
+    }
+}
 /* =========================================================
-   FINAL CELEBRATION
+   BIRTHDAY PARTICLES
 ========================================================= */
-
-function createFinalCelebration() {
-
-    const container =
-        document.createElement("div");
-
-    container.className =
-        "celebration";
-
-    document.body.appendChild(container);
-
+function createBirthdayParticles() {
+    for (let i = 0; i < 35; i++) {
+        setTimeout(() => {
+            createParticle("birthday-particle");
+        }, i * 45);
+    }
+}
+/* =========================================================
+   FINAL PARTICLES
+========================================================= */
+function createFinalParticles() {
     for (let i = 0; i < 50; i++) {
-
-        const particle =
-            document.createElement("span");
-
-        particle.className =
-            "celebration-particle";
-
-        particle.style.left =
-            Math.random() * 100 + "%";
-
-        particle.style.top =
-            Math.random() * 100 + "%";
-
-        const size =
-            Math.random() * 4 + 1;
-
-        particle.style.width =
-            `${size}px`;
-
-        particle.style.height =
-            `${size}px`;
-
-        container.appendChild(particle);
-
-        const x =
-            (Math.random() - 0.5) * 500;
-
-        const y =
-            (Math.random() - 0.5) * 500;
-
-        particle.animate(
-            [
-                {
-                    transform: "translate(0,0) scale(.2)",
-                    opacity: 0
-                },
-
-                {
-                    transform:
-                        `translate(${x}px,${y}px) scale(1)`,
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        `translate(${x * 1.4}px,${y * 1.4}px) scale(.1)`,
-                    opacity: 0
-                }
-            ],
-            {
-                duration:
-                    Math.random() * 2200 + 1800,
-
-                easing:
-                    "cubic-bezier(.2,.8,.2,1)"
-            }
-        );
+        setTimeout(() => {
+            createParticle("celebration-particle");
+        }, i * 30);
     }
-
-    setTimeout(() => {
-        container.remove();
-    }, 4500);
 }
-
-
 /* =========================================================
-   ESCAPE
+   IMAGE PRELOADING
 ========================================================= */
-
-document.addEventListener("keydown", (event) => {
-
-    if (event.key === "Escape") {
-        showScreen(identity);
-    }
-
+memories.forEach(memory => {
+    const img = new Image();
+    img.src = memory.image;
 });
-
-
 /* =========================================================
    TOUCH FEEDBACK
 ========================================================= */
-
-document.querySelectorAll("button").forEach((button) => {
-
-    button.addEventListener("touchstart", () => {
-        button.style.transform = "scale(.96)";
-    });
-
-    button.addEventListener("touchend", () => {
-        button.style.transform = "";
-    });
-
-});
-
-
+document.addEventListener("touchstart", () => {
+    document.body.classList.add("touching");
+}, { passive: true });
+document.addEventListener("touchend", () => {
+    document.body.classList.remove("touching");
+}, { passive: true });
 /* =========================================================
-   PRELOAD ALL PHOTOS
+   KEYBOARD ESCAPE
 ========================================================= */
-
-memories.forEach((memory) => {
-
-    const image = new Image();
-
-    image.src = memory.image;
-
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        showScreen("identity");
+    }
 });
-
-
 /* =========================================================
-   START
+   IMAGE ERROR DETECTION
 ========================================================= */
-
-showScreen(intro);
+document.querySelectorAll("img").forEach(image => {
+    image.addEventListener("error", () => {
+        console.warn(
+            "IMAGE NOT FOUND:",
+            image.getAttribute("src")
+        );
+    });
+});
