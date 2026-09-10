@@ -2,436 +2,307 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
-
-    <title>Abikemi — Mission 2026</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABIKEMI — MISSION 2026</title>
     <meta
         name="description"
-        content="A little birthday mission for Abikemi."
+        content="A little journey through the universe, created for Abikemi ✨❤️"
     >
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap"
         rel="stylesheet"
     >
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <!-- =====================================================
          STARFIELD
     ====================================================== -->
-
-    <div class="stars"></div>
+    <div class="stars stars-one"></div>
     <div class="stars stars-two"></div>
     <div class="stars stars-three"></div>
-
-
     <!-- =====================================================
-         INTRO / SYSTEM BOOT
+         INTRO / BOOT
     ====================================================== -->
-
-    <section class="screen active" id="intro">
-
-        <div class="system-screen">
-
-            <p class="eyebrow">AJ // PERSONAL PROJECT</p>
-
-            <h2>SYSTEM INITIALIZING...</h2>
-
-            <div class="loading-line">
-                <span></span>
-            </div>
-
-            <div class="system-details">
-
-                <p>ESTABLISHING SECURE CONNECTION</p>
-                <p>CONNECTION: SECURE</p>
-                <p>LOCATION: UNKNOWN</p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         IDENTITY
-    ====================================================== -->
-
-    <section class="screen" id="identity">
-
-        <div class="identity-content">
-
-            <p class="eyebrow">IDENTITY DETECTED</p>
-
-            <h1>
-                Oluwakemi<br>
-                Bashirat Saliu
-            </h1>
-
-            <div class="identity-divider"></div>
-
-            <p class="known-as">KNOWN AS</p>
-
-            <h2 class="identity-name">
-                ABIKEMI <span>❤️</span>
-            </h2>
-
-            <p class="identity-message">
-                Yes... you.<br>
-                We have something for you.
-            </p>
-
-            <button id="enterButton" class="continue-button">
-                ENTER MISSION
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         MISSION CONTROL
-    ====================================================== -->
-
-    <section class="screen" id="mission">
-
-        <div class="mission-content">
-
-            <p class="eyebrow">MISSION CONTROL</p>
-
-            <p class="mission-code">ABK-2026</p>
-
-            <div class="orbit-system">
-
-                <div class="orbit orbit-one"></div>
-                <div class="orbit orbit-two"></div>
-                <div class="orbit orbit-three"></div>
-
-                <div class="mission-core">
-                    <span>ABK</span>
+    <main>
+        <section class="screen active" id="intro">
+            <div class="boot-screen">
+                <div class="boot-label">
+                    SYSTEM INITIALIZING
                 </div>
-
-            </div>
-
-            <p class="mission-label">MISSION: ABIKEMI</p>
-
-            <h1>
-                ANOTHER YEAR<br>
-                AROUND THE SUN
-            </h1>
-
-            <p class="destination">
-                Destination: somewhere beautiful.
-            </p>
-
-            <div class="mission-data">
-
-                <div>
-                    <span>SUBJECT</span>
-                    <strong>ABIKEMI</strong>
+                <div class="boot-line">
+                    <span></span>
                 </div>
-
-                <div>
-                    <span>STATUS</span>
-                    <strong>CELEBRATING</strong>
+                <div class="boot-details">
+                    <span>ABK-2026</span>
+                    <span>OLAJIDEH // PERSONAL PROJECT</span>
                 </div>
-
-                <div>
-                    <span>MISSION</span>
-                    <strong>MAKE HER SMILE</strong>
+            </div>
+        </section>
+        <!-- =================================================
+             IDENTITY
+        ================================================== -->
+        <section class="screen" id="identity">
+            <div class="identity-content">
+                <p class="eyebrow">
+                    SUBJECT IDENTIFIED
+                </p>
+                <h1>
+                    Oluwakemi<br>
+                    Bashirat Saliu
+                </h1>
+                <div class="known-as">
+                    <span>KNOWN AS</span>
+                    <strong>ABIKEMI ✨❤️</strong>
                 </div>
-
+                <p class="identity-copy">
+                    One person.<br>
+                    One beautiful story.<br>
+                    One more trip around the sun.
+                </p>
+                <button class="main-button" id="enterButton">
+                    ENTER THE STORY
+                    <span>→</span>
+                </button>
             </div>
-
-            <button id="launchButton" class="rocket-button">
-                🚀 LAUNCH
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         SPACE TRANSMISSION
-    ====================================================== -->
-
-    <section class="screen" id="space">
-
-        <div class="space-content">
-
-            <p class="eyebrow">
-                TRANSMISSION ACTIVE
-            </p>
-
-            <div class="space-rocket">
-                🚀
+        </section>
+        <!-- =================================================
+             MISSION CONTROL
+        ================================================== -->
+        <section class="screen" id="mission">
+            <div class="mission-content">
+                <p class="eyebrow">
+                    MISSION CONTROL
+                </p>
+                <div class="mission-code">
+                    ABK-2026
+                </div>
+                <h1>
+                    ANOTHER YEAR<br>
+                    AROUND THE SUN
+                </h1>
+                <div class="orbit-system">
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <div class="orbit orbit-three"></div>
+                    <div class="orbit-core">
+                        <span>24</span>
+                    </div>
+                </div>
+                <p class="mission-copy">
+                    Destination: another beautiful chapter.
+                </p>
+                <button class="main-button" id="launchButton">
+                    BEGIN MISSION
+                    <span>→</span>
+                </button>
             </div>
-
-            <p class="space-small">
-                ONE PLANET.<br>
-                BILLIONS OF PEOPLE.
-            </p>
-
-            <h1>
-                AND SOMEHOW...
-            </h1>
-
-            <h2>
-                I GOT TO<br>
-                MEET YOU.
-            </h2>
-
-            <button id="arrivalButton" class="continue-button">
-                CONTINUE
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         ABIKEMI'S UNIVERSE
-    ====================================================== -->
-
-    <section class="screen" id="universe">
-
-        <div class="universe-content">
-
-            <p class="eyebrow">
-                WELCOME TO YOUR UNIVERSE
-            </p>
-
-            <h1>ABIKEMI</h1>
-
-            <p class="universe-intro">
-                Five little pieces of a person
-                worth celebrating.
-            </p>
-
-            <div class="photo-universe">
-
-                <div class="orbit-photo photo-one">
+        </section>
+        <!-- =================================================
+             SPACE / ROCKET
+        ================================================== -->
+        <section class="screen" id="space">
+            <div class="space-content">
+                <div class="space-label">
+                    <span>MISSION STATUS</span>
+                    <strong>IN TRANSIT</strong>
+                </div>
+                <div class="rocket-scene">
+                    <div class="planet planet-back"></div>
+                    <div class="planet planet-front"></div>
+                    <div class="rocket">
+                        🚀
+                    </div>
+                </div>
+                <div class="space-message">
+                    <p class="eyebrow">
+                        SOMEWHERE IN THE UNIVERSE
+                    </p>
+                    <h1>
+                        ONE PLANET.<br>
+                        BILLIONS OF PEOPLE.
+                    </h1>
+                    <p>
+                        And somehow...
+                    </p>
+                    <strong>
+                        I GOT TO MEET YOU.
+                    </strong>
+                </div>
+                <button class="main-button" id="arrivalButton">
+                    CONTINUE
+                    <span>→</span>
+                </button>
+            </div>
+        </section>
+        <!-- =================================================
+             THE UNIVERSE / MEMORIES
+        ================================================== -->
+        <section class="screen" id="universe">
+            <div class="universe-content">
+                <p class="eyebrow">
+                    THE UNIVERSE
+                </p>
+                <h1>
+                    SOME MEMORIES<br>
+                    DESERVE THEIR<br>
+                    OWN ORBIT.
+                </h1>
+                <div class="memory-orbit">
+                    <div class="orbit-ring ring-one"></div>
+                    <div class="orbit-ring ring-two"></div>
+                    <div class="orbit-photo photo-one">
+                        <img
+                            src="asset/11eef4c8-186e-41da-a821-30d66d267143.jpeg"
+                            alt="Abikemi"
+                        >
+                    </div>
+                    <div class="orbit-photo photo-two">
+                        <img
+                            src="asset/44a227b1-d148-4a83-9625-a42e6ddb5b80.jpeg"
+                            alt="Abikemi"
+                        >
+                    </div>
+                    <div class="orbit-photo photo-three">
+                        <img
+                            src="asset/81a1f21b-6837-4656-a48b-8bafca2e8704.jpeg"
+                            alt="Abikemi"
+                        >
+                    </div>
+                    <div class="orbit-photo photo-four">
+                        <img
+                            src="asset/c5e86a78-4ea6-46e2-80d2-ac6ba310e573.jpeg"
+                            alt="Abikemi"
+                        >
+                    </div>
+                    <div class="orbit-photo photo-five">
+                        <img
+                            src="asset/f3b45a18-d715-4666-931a-62cde3463b9e.jpeg"
+                            alt="Abikemi"
+                        >
+                    </div>
+                    <div class="orbit-center">
+                        ✨
+                    </div>
+                </div>
+                <p class="memory-caption">
+                    A little piece of the universe called Abikemi ✨❤️
+                </p>
+                <button class="main-button" id="memoryButton">
+                    OPEN MEMORY
+                    <span>→</span>
+                </button>
+            </div>
+        </section>
+        <!-- =================================================
+             MEMORY ARCHIVE
+        ================================================== -->
+        <section class="screen" id="archive">
+            <div class="archive-content">
+                <p class="eyebrow">
+                    MEMORY ARCHIVE
+                </p>
+                <div class="archive-number">
+                    01 / 05
+                </div>
+                <div class="archive-photo">
                     <img
+                        id="archiveImage"
                         src="asset/11eef4c8-186e-41da-a821-30d66d267143.jpeg"
-                        alt="Abikemi memory one"
+                        alt="Abikemi"
                     >
                 </div>
-
-                <div class="orbit-photo photo-two">
-                    <img
-                        src="asset/44a227b1-d148-4a83-9625-a42e6ddb5b80.jpeg"
-                        alt="Abikemi memory two"
-                    >
+                <p class="archive-caption" id="archiveCaption">
+                    SOME MOMENTS DON'T NEED AN EXPLANATION.
+                </p>
+                <button class="main-button" id="archiveButton">
+                    NEXT MEMORY
+                    <span>→</span>
+                </button>
+            </div>
+        </section>
+        <!-- =================================================
+             BIRTHDAY TRANSMISSION
+        ================================================== -->
+        <section class="screen" id="birthday">
+            <div class="birthday-content">
+                <div class="birthday-status" id="birthdayStatus"></div>
+                <p class="eyebrow">
+                    INCOMING TRANSMISSION
+                </p>
+                <div class="signal">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-
-                <div class="orbit-photo photo-three">
-                    <img
-                        src="asset/81a1f21b-6837-4656-a48b-8bafca2e8704.jpeg"
-                        alt="Abikemi memory three"
-                    >
+                <p class="message-label">
+                    MESSAGE RECEIVED
+                </p>
+                <h1 id="birthdayTitle">
+                    HAPPY BIRTHDAY
+                </h1>
+                <h2 class="birthday-name" id="birthdayName">
+                    ABIKEMI ✨❤️
+                </h2>
+                <div class="birthday-message" id="birthdayMessage">
+                    <p>
+                        Here's to another trip around the sun.
+                    </p>
+                    <p>
+                        More laughter.<br>
+                        More memories.<br>
+                        More beautiful moments.<br>
+                        More life.
+                    </p>
+                    <p>
+                        May this new chapter be kind to you,
+                        beautiful to you,
+                        and full of everything your heart deserves.
+                    </p>
                 </div>
-
-                <div class="orbit-photo photo-four">
-                    <img
-                        src="asset/c5e86a78-4ea6-46e2-80d2-ac6ba310e573.jpeg"
-                        alt="Abikemi memory four"
-                    >
-                </div>
-
-                <div class="orbit-photo photo-five">
+                <button class="main-button hidden" id="finalButton">
+                    ONE LAST THING
+                    <span>→</span>
+                </button>
+            </div>
+        </section>
+        <!-- =================================================
+             FINAL REVEAL
+        ================================================== -->
+        <section class="screen" id="final">
+            <div class="final-content">
+                <div class="final-photo">
                     <img
                         src="asset/f3b45a18-d715-4666-931a-62cde3463b9e.jpeg"
-                        alt="Abikemi memory five"
+                        alt="Abikemi"
                     >
                 </div>
-
-                <div class="universe-center">
-                    <span>ABK</span>
+                <p class="eyebrow">
+                    FINAL TRANSMISSION
+                </p>
+                <h1>
+                    ABIKEMI ✨❤️
+                </h1>
+                <p class="final-message">
+                    If this year is anything like you...
+                    <br>
+                    it’s going to be beautiful.
+                </p>
+                <div class="signature">
+                    — OLAJIDEH
                 </div>
-
+                <div class="final-footer">
+                    ANOTHER ORBIT COMPLETE.<br>
+                    THE NEXT ONE BEGINS NOW.
+                </div>
             </div>
-
-            <button id="universeButton" class="continue-button">
-                EXPLORE
-            </button>
-
-        </div>
-
-    </section>
-
-
+        </section>
+    </main>
     <!-- =====================================================
-         PRIVATE ARCHIVE
+         SCRIPT
     ====================================================== -->
-
-    <section class="screen" id="archive">
-
-        <div class="archive-content">
-
-            <p class="eyebrow">
-                ABIKEMI // PRIVATE ARCHIVE
-            </p>
-
-            <h1>
-                THE GIRL WE'RE<br>
-                CELEBRATING.
-            </h1>
-
-            <div class="archive-photo-wrap">
-
-                <img
-                    id="archiveImage"
-                    src="asset/11eef4c8-186e-41da-a821-30d66d267143.jpeg"
-                    alt="Abikemi"
-                >
-
-            </div>
-
-            <div class="archive-info">
-
-                <span id="memoryNumber">
-                    01 / 05
-                </span>
-
-                <p id="memoryCaption">
-                    Some people simply exist.<br>
-                    Some people make ordinary moments memorable.
-                </p>
-
-            </div>
-
-            <button id="archiveButton" class="continue-button">
-                NEXT MEMORY
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         BIRTHDAY TRANSMISSION
-    ====================================================== -->
-
-    <section class="screen" id="birthday">
-
-        <div class="birthday-content">
-
-            <p class="eyebrow">
-                INCOMING TRANSMISSION
-            </p>
-
-            <div class="signal">
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </div>
-
-            <p class="message-received">
-                MESSAGE RECEIVED
-            </p>
-
-            <h1>
-                HAPPY BIRTHDAY
-            </h1>
-
-            <h2 class="birthday-name">
-                ABIKEMI ❤️
-            </h2>
-
-            <div class="birthday-message">
-
-                <p>
-                    Here's to another trip around the sun.
-                </p>
-
-                <p>
-                    More laughter.<br>
-                    More memories.<br>
-                    More beautiful moments.<br>
-                    More life.
-                </p>
-
-            </div>
-
-            <button id="finalButton" class="continue-button">
-                ONE LAST THING
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         FINAL REVEAL
-    ====================================================== -->
-
-    <section class="screen" id="final">
-
-        <div class="final-content">
-
-            <p class="eyebrow">
-                MISSION COMPLETE
-            </p>
-
-            <div class="final-image-wrap">
-
-                <img
-                    src="asset/f3b45a18-d715-4666-931a-62cde3463b9e.jpeg"
-                    alt="Abikemi"
-                >
-
-            </div>
-
-            <h1>
-                ABIKEMI
-            </h1>
-
-            <p class="final-message">
-                If this year is anything like you...
-                it’s going to be beautiful.
-            </p>
-
-            <p class="signature">
-                — AJ
-            </p>
-
-            <div class="final-line"></div>
-
-            <p class="final-footer">
-                ANOTHER ORBIT COMPLETE.<br>
-                THE NEXT ONE BEGINS NOW.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
-
     <script src="script.js"></script>
-
 </body>
 </html>
